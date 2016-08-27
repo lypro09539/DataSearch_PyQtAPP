@@ -13,7 +13,7 @@ config = {
         'install_requires': ['nose'],
         'packages': ['ex46','bin'],
         'scripts': [],
-        'name': 'ex46'
+        'name': 'ex48'
 
 }
 
