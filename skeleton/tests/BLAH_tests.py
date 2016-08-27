@@ -28,5 +28,5 @@ def test_map():
     down.add_paths({'up': start})
 
     assert_equal(start.go('west'), west)
-    assert_equal(start.go('west').go('east'), start)
+    assert_equal(start.go('west').go('east'),west )
     assert_equal(start.go('down').go('up'), start)
