@@ -3,7 +3,7 @@ from ex48.ex48 import lex
 
 
 def test_directions():
-    
+    lexicon = lex()
     assert_equal(lexicon.scan("north"), [('direction', 'north')])
     result = lexicon.scan("north south east")
     assert_equal(result, [('direction', 'north'),
@@ -12,7 +12,7 @@ def test_directions():
 
 def test_verbs():
 
-    
+    lexicon = lex()
     assert_equal(lexicon.scan("go"), [('verb', 'go')])
     result = lexicon.scan("go kill eat")
     assert_equal(result, [('verb', 'go'),
@@ -21,6 +21,7 @@ def test_verbs():
 
 
 def test_stops():
+    lexicon = lex()
     assert_equal(lexicon.scan("the"), [('stop', 'the')])
     result = lexicon.scan("the in of")
     assert_equal(result, [('stop', 'the'),
@@ -29,14 +30,14 @@ def test_stops():
 
 
 def test_nouns():
-
+    lexicon = lex()
     assert_equal(lexicon.scan("bear"), [('noun', 'bear')])
     result = lexicon.scan("bear princess")
     assert_equal(result, [('noun', 'bear'),
                           ('noun', 'princess')])
 
 def test_numbers():
-
+    lexicon = lex()
     assert_equal(lexicon.scan("1234"), [('number', 1234)])
     result = lexicon.scan("3 91234")
     assert_equal(result, [('number', 3),
@@ -44,7 +45,7 @@ def test_numbers():
 
 
 def test_errors():
-
+    lexicon = lex()
     assert_equal(lexicon.scan("ASDFADFASDF"), [('error', 'ASDFADFASDF')])
     result = lexicon.scan("bear IAS princess")
     assert_equal(result, [('noun', 'bear'),
