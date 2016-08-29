@@ -1,15 +1,18 @@
 #-*- coding: UTF-8 -*- 
+from ex48 import *
+lexicon=lex()
+
 class ParserError(Exception):
     pass
 
 
 class Sentence(object):
 
-    def __init__(self, subject, verb, object):
+    def __init__(self, subject, verb, _object):
         # remember we take ('noun','princess') tuples and convert them
         self.subject = subject[1]
         self.verb = verb[1]
-        self.object = object[1]
+        self._object = _object[1]
 
 #word_list不为空时，检测第一个元素元组中的的type
 def peek(word_list):
@@ -52,7 +55,7 @@ def parse_object(word_list):
 
     if next == 'noun':
         return match(word_list, 'noun')
-    if next == 'direction':
+    elif next == 'direction':
         return match(word_list, 'direction')
     else:
         raise ParserError("Expected a noun or direction next.")
@@ -66,15 +69,20 @@ def parse_subject(word_list, subj):
 
 
 def parse_sentence(word_list):
-    skip(word_list, 'stop')
 
+    skip(word_list, 'stop')
+    
     start = peek(word_list)
 
     if start == 'noun':
         subj = match(word_list, 'noun')
+        
         return parse_subject(word_list, subj)
     elif start == 'verb':
         # assume the subject is the player then
         return parse_subject(word_list, ('noun', 'player'))
     else:
         raise ParserError("Must start with subject, object, or verb not: %s" % start)
+
+print(Sentence(('1','2'),('2','3'),('4','5')))
+
