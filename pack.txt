@@ -1,0 +1,1 @@
+pyinstaller -F -w -p C:\Python27\Lib\site-packages\PyQt4;D:\x\xxx -i xxxx.ico xxx.py 
